@@ -1,0 +1,58 @@
+@charset "utf-8";
+*:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+canvas {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: #fff;
+    display: none
+}
+
+body,
+html {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: #fff
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-family: Gotham, helvetica neue, Helvetica, Arial, sans-serif;
+    font-size: 8vh;
+    line-height: 18;
+    text-align: center;
+    font-weight: 700;
+    z-index: 999999999;
+    background-color: #fff;
+    background-image: url(/images/stopwatch-logo-loader.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center
+}
+
+#animation_container {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
