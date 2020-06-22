@@ -657,7 +657,7 @@
     }).prototype = p = new cjs.MovieClip();
     p.nominalBounds = rect = new cjs.Rectangle(-200, 110, 1200, 220);
     p.frameBounds = [rect];
-    lib.properties = { id: '0BDF003865143E41B61E47B1C6F8B843', width: 400, height: 220, fps: 24, color: "#FFFFFF", opacity: 1.00, manifest: [{ src: "C:\\Windows\\Media\\Alarm01.wav", id: "bell" }], preloads: [] };
+    lib.properties = { id: '0BDF003865143E41B61E47B1C6F8B843', width: 400, height: 220, fps: 24, color: "#FFFFFF", opacity: 1.00, manifest: [{ src: "./sound/Alarm01.wav", id: "bell" }], preloads: [] };
     (lib.Stage = function(canvas) { createjs.Stage.call(this, canvas); }).prototype = p = new createjs.Stage();
     p.setAutoPlay = function(autoPlay) { this.tickEnabled = autoPlay; }
     p.play = function() {
