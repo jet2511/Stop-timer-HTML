@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Stop Timer</title>
+    <link rel="stylesheet" href="./css/modern.css">
+</head>
+<body>
+    <div class="top-controls">
+        <button class="icon-btn" id="langToggle" title="Switch Language">🌐 EN</button>
+        <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌓</button>
+    </div>
+
+    <div class="container">
+        <!-- Main Menu -->
+        <div id="screenMenu" class="timer-card">
+            <h1>Stop Timer</h1>
+            <div class="menu">
+                <button class="mode-btn" id="toStopwatch">⏱️ Stopwatch</button>
+                <button class="mode-btn" id="toCountdown">⏲️ Countdown</button>
+            </div>
+        </div>
+
+        <!-- Timer Screen -->
+        <div id="screenTimer" class="timer-card hidden">
+            <h2 id="timerLabel">Stopwatch</h2>
+            <div class="timer-display">
+                <span id="displayHms" class="time-hms">00:00:00</span>
+                <span id="displayMs" class="time-ms">.000</span>
+            </div>
+            <div class="controls">
+                <button id="btnBack" class="btn-secondary">Back</button>
+                <button id="btnStart" class="btn-primary">Start</button>
+                <button id="btnClear" class="btn-secondary">Clear</button>
+            </div>
+        </div>
+
+        <!-- Countdown Settings Screen -->
+        <div id="screenSettings" class="timer-card hidden">
+            <h2>Set Countdown</h2>
+            <div class="timer-display">
+                <span id="settingsDisplay" class="time-hms">00:00:00</span>
+            </div>
+            <div class="numpad">
+                <button data-num="1">1</button>
+                <button data-num="2">2</button>
+                <button data-num="3">3</button>
+                <button data-num="4">4</button>
+                <button data-num="5">5</button>
+                <button data-num="6">6</button>
+                <button data-num="7">7</button>
+                <button data-num="8">8</button>
+                <button data-num="9">9</button>
+                <button id="btnSettingsClear">C</button>
+                <button data-num="0">0</button>
+                <button id="btnSettingsGo" style="background-color: var(--accent-color); color: white;">Go</button>
+            </div>
+            <div style="margin-top: 1rem;">
+                <button id="btnSettingsBack" class="btn-secondary">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>

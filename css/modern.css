@@ -1,0 +1,174 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --accent-color: #007bff;
+    --secondary-color: #6c757d;
+    --timer-font: 'Inter', system-ui, -apple-system, sans-serif;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --accent-color: #38bdf8;
+    --secondary-color: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Aggressive high contrast override for dark mode */
+[data-theme="dark"] *:not(.btn-primary, .btn-primary *) {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary * {
+    color: #ffffff !important;
+}
+
+* {
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--timer-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.timer-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+}
+
+.timer-display {
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 2rem;
+}
+
+.time-hms {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.time-ms {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    color: inherit; /* Ensure buttons inherit text color */
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white; /* Maintain white text on blue background */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--text-color);
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.mode-btn {
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color); /* Explicitly set color for mode buttons */
+}
+
+.mode-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.top-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.numpad button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    background: var(--glass-bg);
+}
+
+.hidden {
+    display: none;
+}
