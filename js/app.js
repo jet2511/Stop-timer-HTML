@@ -23,7 +23,8 @@ let countdownInput = '';
 let timer = null;
 
 // Audio
-const alarmSound = new Audio('./sound/bell.mp3');
+const alarmSound = new Audio('./sound/Alarm01.wav');
+alarmSound.loop = true;
 
 // Initialize translations
 function updateUIStrings() {
@@ -66,8 +67,9 @@ timer = new Timer({
     },
     onend: () => {
         btnStart.textContent = i18n.t('start');
+        alarmSound.currentTime = 0;
         alarmSound.play().catch(e => console.log("Sound play error:", e));
-        alert(i18n.t('timeUp'));
+        document.body.classList.add('is-flashing');
     }
 });
 
@@ -98,8 +100,20 @@ btnBack.onclick = () => {
 
 document.getElementById('btnSettingsBack').onclick = () => showScreen(screenMenu);
 
+function dismissAlarm() {
+    if (document.body.classList.contains('is-flashing')) {
+        document.body.classList.remove('is-flashing');
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+        resetTimerDisplay();
+        return true;
+    }
+    return false;
+}
+
 // Timer Controls
 btnStart.onclick = () => {
+    dismissAlarm();
     if (timer.isPaused) {
         timer.resume();
     } else if (timer.interval) {
@@ -116,15 +130,22 @@ btnStart.onclick = () => {
 };
 
 btnClear.onclick = () => {
+    dismissAlarm();
     timer.stop();
     resetTimerDisplay();
     updateUIStrings();
 };
 
 function resetTimerDisplay() {
-    displayHms.textContent = '00:00:00';
-    displayMs.textContent = '.000';
-    document.title = i18n.t('title');
+    if (currentMode === 'countdown' && settingsDisplay.textContent !== '00:00:00') {
+        displayHms.textContent = settingsDisplay.textContent;
+        displayMs.textContent = '.000';
+        document.title = settingsDisplay.textContent;
+    } else {
+        displayHms.textContent = '00:00:00';
+        displayMs.textContent = '.000';
+        document.title = i18n.t('title');
+    }
 }
 
 // Countdown Settings
@@ -145,8 +166,6 @@ document.getElementById('btnSettingsGo').onclick = () => {
     if (!countdownInput || countdownInput === '000000') return;
     showScreen(screenTimer);
     resetTimerDisplay();
-    const hms = settingsDisplay.textContent;
-    displayHms.textContent = hms;
     updateUIStrings();
 };
 
@@ -171,6 +190,11 @@ document.getElementById('langToggle').onclick = () => {
 
 // Keyboard Support
 window.addEventListener('keydown', (e) => {
+    if (dismissAlarm()) {
+        e.preventDefault();
+        return; // stop further processing
+    }
+
     if (e.code === 'Space') {
         if (!screenTimer.classList.contains('hidden')) {
             btnStart.click();
