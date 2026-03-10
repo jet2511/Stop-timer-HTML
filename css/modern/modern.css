@@ -172,3 +172,12 @@ button:active {
 .hidden {
     display: none;
 }
+
+@keyframes flashBg {
+    0%, 100% { background-color: var(--bg-color); }
+    50% { background-color: #ff4444; }
+}
+
+body.is-flashing {
+    animation: flashBg 0.5s infinite;
+}
